@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -9,7 +10,7 @@ function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    
+    const navigate = useNavigate();
 
     const handleLogin = async () => {
         try {
@@ -19,7 +20,7 @@ function Login() {
             });
 
             localStorage.setItem('token', response.data.token);
-            
+            navigate('/home');
         } catch (error) {
             setError('Invalid username or password');
         }

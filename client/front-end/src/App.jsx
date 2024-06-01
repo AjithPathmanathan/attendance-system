@@ -1,14 +1,20 @@
 import { Home } from "./Home"
 import Login from "./Login"
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
  
 
   return (
-    <>
-    <Login/>
-     <Home/>
-    </>
+    
+     <Router>
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/home" element={ <Home />} />
+                <Route path="/" element={<Navigate to="/login" />} />
+            </Routes>
+        </Router>
+    
   )
 }
 
