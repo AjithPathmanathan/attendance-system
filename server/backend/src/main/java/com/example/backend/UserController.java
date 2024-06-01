@@ -6,6 +6,7 @@ package com.example.backend;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,12 @@ import java.util.Map;
 @RequestMapping("api/v1")
 public class UserController {
 
-    private String secret_key="xW7FzKtLOovM8Nl8xv0LWR6tNsPTZ+ok5xtz9V1/Jr8=";
-
-    private String USERNAME = "pathmanathan";
-
-    private String PASSWORD = "pathmanathan1999";
+    @Value("${secret}")
+    private String secret_key;
+    @Value("${user}")
+    private String USERNAME;
+    @Value("${password}")
+    private String PASSWORD;
 
     @PostMapping("/login")
     public ResponseEntity<?> UserLogin(@RequestBody Map<String,String> credentials) {
