@@ -18,6 +18,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1")
+@CrossOrigin(origins = "http://localhost:5175")
 public class UserController {
 
     @Value("${secret}")
